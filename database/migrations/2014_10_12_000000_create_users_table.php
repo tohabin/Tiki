@@ -18,6 +18,13 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            $table->string('address');
+            $table->string('phone');
+            $table->string('nid');
+            $table->enum('role', ['Super_Admin', 'Admin', 'User', 'Restrict']);
+            $table->enum('position', ['MD', 'Manager', 'Accountant', 'Ticket_Seller', 'Driver', 'Helper', 'Worker']);
+            
             $table->timestamps();
         });
     }

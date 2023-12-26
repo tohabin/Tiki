@@ -19,9 +19,28 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'address',  
         'email',
         'password',
+        'address',
+        'phone',
+        'nid',
+        'role',
+        'position'
     ];
+
+    
+
+    // // Define relationships
+    // public function trips()
+    // {
+    //     return $this->hasMany(Trip::class, 'driver_id');
+    // }
+
+    // public function seatAllocations()
+    // {
+    //     return $this->hasMany(SeatAllocation::class, 'user_id');
+    // }
 
     /**
      * The attributes that should be hidden for serialization.
