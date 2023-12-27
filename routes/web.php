@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TripController;
+use App\Http\Controllers\SeatAllocationController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,17 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-use App\Http\Controllers\UserController;
+// DashBoard
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 // User Routes
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::resource('users', UserController::class);
+
+// Location Routes
+Route::resource('locations', LocationController::class);
+
+// Trip Routes
+Route::resource('trips', TripController::class);
+
+// Seat Allocation Routes
+Route::resource('seat_allocations', SeatAllocationController::class);
+

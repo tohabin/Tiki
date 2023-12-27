@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Location;
+use App\Models\Trip;
+use App\Models\SeatAllocation;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +22,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        User::factory(10)->create();
+        Location::factory(5)->create();
+        Trip::factory(10)->create();
+        SeatAllocation::factory(20)->create();
+        
+
     }
 }

@@ -3,47 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Laravel App</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-    <!-- DataTables.js CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <!-- DataTables.js JS -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <title>Your Ticketing System</title>
+    <!-- Add your CSS and JS CDN links here -->
+    <!-- Example Bootstrap CSS and JS CDN links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Your App Name</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Content Section -->
-    <div class="container mt-4">
-        @yield('content')
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{ route('dashboard') }}">Ticketing System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item {{ request()->routeIs('dashboard*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+            </li>
+            <li class="nav-item {{ request()->routeIs('users*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+            </li>
+            <li class="nav-item {{ request()->routeIs('locations*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('locations.index') }}">Locations</a>
+            </li>
+            <li class="nav-item {{ request()->routeIs('trips*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('trips.index') }}">Trips</a>
+            </li>
+            <li class="nav-item {{ request()->routeIs('seat_allocations*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('seat_allocations.index') }}">Seat Allocations</a>
+            </li>
+        </ul>
     </div>
+</nav>
 
-    <!-- Scripts Section -->
-    @stack('scripts')
+<div class="container mt-4">
+    @yield('content')
+</div>
 
 </body>
 </html>
